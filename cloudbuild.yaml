@@ -1,0 +1,8 @@
+timeout: 1800s
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/demoweb:$TAG_NAME', '.']
+  id: 'build-gcr'
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/demoweb:$TAG_NAME']
+  id: 'push-gcr'
